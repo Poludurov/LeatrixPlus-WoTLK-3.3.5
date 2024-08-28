@@ -173,6 +173,18 @@
 			LpEvt:UnregisterEvent("CONFIRM_SUMMON");
 		end
 
+		----------------------------------------------------------------------
+		--	Automatic ready check
+		----------------------------------------------------------------------
+
+		if LeaPlusLC["AutoRCPress"] == "On" then
+			ReadyCheckFrame:SetScript("OnShow", 
+				function() 
+					ReadyCheckFrameYesButton:Click() 
+					print('Ready check pressed');
+				end
+			);
+		end
 
 		----------------------------------------------------------------------
 		--	Automatic guild decline
@@ -568,6 +580,7 @@
 		if not LeaPlusDB["NoTradeRequests"]			then LeaPlusLC["NoTradeRequests"]		= "Off"	else LeaPlusLC["NoTradeRequests"]		= LeaPlusDB["NoTradeRequests"]		end 
 		-- if not LeaPlusDB["NoGuildInvites"]			then LeaPlusLC["NoGuildInvites"]		= "Off"	else LeaPlusLC["NoGuildInvites"]		= LeaPlusDB["NoGuildInvites"]		end 
 		if not LeaPlusDB["AutoAcceptSummon"] 		then LeaPlusLC["AutoAcceptSummon"]		= "Off"	else LeaPlusLC["AutoAcceptSummon"]		= LeaPlusDB["AutoAcceptSummon"] 	end 
+		if not LeaPlusDB["AutoRCPress"] 			then LeaPlusLC["AutoRCPress"]			= "Off"	else LeaPlusLC["AutoRCPress"]			= LeaPlusDB["AutoRCPress"]		 	end 
 		if not LeaPlusDB["BlockGuild"] 				then LeaPlusLC["BlockGuild"]			= "Off"	else LeaPlusLC["BlockGuild"]			= LeaPlusDB["BlockGuild"] 			end 
 		if not LeaPlusDB["FasterLooting"] 				then LeaPlusLC["FasterLooting"]			= "Off"	else LeaPlusLC["FasterLooting"]			= LeaPlusDB["FasterLooting"] 			end 
 
@@ -712,6 +725,7 @@
 		LeaPlusDB["AutoAcceptRes"] 			= LeaPlusLC["AutoAcceptRes"]
 		LeaPlusDB["NoAutoResInCombat"]		= LeaPlusLC["NoAutoResInCombat"]
 		LeaPlusDB["AutoAcceptSummon"] 		= LeaPlusLC["AutoAcceptSummon"]
+		LeaPlusDB["AutoRCPress"] 			= LeaPlusLC["AutoRCPress"]
 		LeaPlusDB["BlockGuild"] 			= LeaPlusLC["BlockGuild"]
 		LeaPlusDB["FasterLooting"] 			= LeaPlusLC["FasterLooting"]
 		
@@ -4430,7 +4444,7 @@ end
 	LeaPlusLC:MakeCB(LeaPlusLC["Page1"], "AutoAcceptRes"			,	"Accept resurrect"				, 	146, -212, 	"If checked, resurrection attempts cast on you will be automatically accepted.")
 	LeaPlusLC:MakeCB(LeaPlusLC["Page1"], "NoAutoResInCombat"		,	"Exclude combat res"			, 	166, -232, 	"If checked, resurrection attempts cast on you will not be automatically accepted if the player resurrecting you is in combat.")
 	LeaPlusLC:MakeCB(LeaPlusLC["Page1"], "AutoAcceptSummon"			,	"Accept summon"					, 	146, -252, 	"If checked, summon requests will be accepted automatically unless you are in combat.")
-
+	LeaPlusLC:MakeCB(LeaPlusLC["Page1"], "AutoRCPress"				,	"Accept ready check"			, 	146, -272, 	"If checked, ready check will be accepted automatically.")
 
 	LeaPlusLC:MakeTx(LeaPlusLC["Page1"], "Blockers"					, 	340, -72);
 	LeaPlusLC:MakeCB(LeaPlusLC["Page1"], "NoDuelRequests"			, 	"Block duels"					,	340, -92, 	"If checked, duel requests will be blocked unless the player requesting the duel is in your friends list.  This includes Real ID friends.")
