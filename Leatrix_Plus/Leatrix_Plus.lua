@@ -2036,9 +2036,9 @@
 		if LeaPlusLC["ShowVolume"] == "On" then
 			LeaPlusLC["LeaPlusMaxVol"] = tonumber(GetCVar("Sound_MasterVolume"));
 			if LeaPlusLC["ShowVanityButtons"] == "On" then
-				LeaPlusLC:MakeSL(CharacterModelFrame, "LeaPlusMaxVol", "",	0, 1, 0.05, 10, -145, "%.2f")
+				LeaPlusLC:MakeSL(CharacterModelFrame, "LeaPlusMaxVol", "",	0, 1, 0.05, 10, -175, "%.2f")
 			else
-				LeaPlusLC:MakeSL(CharacterModelFrame, "LeaPlusMaxVol", "",	0, 1, 0.05, 10, -165, "%.2f")
+				LeaPlusLC:MakeSL(CharacterModelFrame, "LeaPlusMaxVol", "",	0, 1, 0.05, 10, -185, "%.2f")
 			end
 			LeaPlusCB["LeaPlusMaxVol"]:SetWidth(84);
 
