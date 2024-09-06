@@ -178,12 +178,18 @@
 		----------------------------------------------------------------------
 
 		if LeaPlusLC["AutoRCPress"] == "On" then
-			ReadyCheckFrame:SetScript("OnShow", 
-				function() 
-					ReadyCheckFrameYesButton:Click() 
-					print('Ready check pressed');
+			ReadyCheckFrameYesButton:HookScript("OnUpdate",function(self,elapsed)
+				self.elapsed = self.elapsed - elapsed
+				self:SetFormattedText('%s |cffffffff(%.1f)|r', READY, self.elapsed)
+				if(self.elapsed <= 0) then
+					self:SetText(READY)
+					self:Click()
 				end
-			);
+			end)
+
+			ReadyCheckFrameYesButton:HookScript("OnShow", function(self)
+				self.elapsed = 3
+			end)
 		end
 
 		----------------------------------------------------------------------
